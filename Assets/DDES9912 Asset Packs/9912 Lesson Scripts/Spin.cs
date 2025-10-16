@@ -25,7 +25,16 @@ public class Spin : MonoBehaviour
         yAcceleration = 0;
     }
 
-    public void SetSpeed(float newSpeed)
+    public void +()
+    {
+        ySpeed = ySpeed +10;
+    }
+    public void -()
+    {
+        ySpeed = ySpeed -10;
+}
+
+public void SetSpeed(float newSpeed)
     {
         ySpeed = newSpeed;
     }
