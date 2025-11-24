@@ -15,7 +15,7 @@ public class GhostWalk : MonoBehaviour
     {
         myagent = GetComponent<NavMeshAgent>();
         characterBouncer=GetComponent<SinYBob>();
-        characterBouncers= GetComponentsInChildren<SinYBob>();
+
     }
 
     // Update is called once per frame
