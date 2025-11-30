@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class EmissionController : MonoBehaviour
 {
-    public Rigidbody wheelRb;          // 水车刚体
-    public Renderer rend;              // 球的 Renderer
+    public Rigidbody wheelRb;         
+    public Renderer rend;             
     public Color slowColor = Color.red;
     public Color fastColor = Color.green;
-    public float maxRpm = 100f;        // 最高速度对应的亮度
+    public float maxRpm = 60;       
 
-    Material mat;                      // 材质实例
+    Material mat;                    
 
     void Start()
     {
-        mat = rend.material;  // 注意：生成实例，否则会影响整个材质球
+        mat = rend.material;  
     }
 
     void Update()
@@ -20,13 +20,14 @@ public class EmissionController : MonoBehaviour
         float rpm = wheelRb.angularVelocity.magnitude * 60f / (2f * Mathf.PI);
         float t = Mathf.Clamp01(rpm / maxRpm);
 
-        // 颜色渐变（红→绿）
+        // red to green
+
         Color emissionColor = Color.Lerp(slowColor, fastColor, t);
 
-        // 越快越亮（乘上一个亮度系数）
+        // the faster, the brighter
         float intensity = Mathf.Lerp(0.2f, 2.5f, t);
 
-        // 设置 emission：必须乘以 intensity
+        // set emission color
         mat.SetColor("_EmissionColor", emissionColor * intensity);
     }
 }
